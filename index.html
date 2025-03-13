@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechMaster - 专业技术解决方案提供商</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .main-content {
+            margin-top: 80px;
+        }
+
+        /* 顶部轮播图样式 */
+        .swiper {
+            width: 100%;
+            height: 500px;
+        }
+
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 服务卡片样式 */
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-card h3 {
+            padding: 1rem;
+            margin: 0;
+            color: #1e3c72;
+        }
+
+        .service-card p {
+            padding: 0 1rem 1rem;
+            margin: 0;
+            color: #666;
+        }
+
+        /* 案例展示部分样式 */
+        .cases {
+            background: #f5f5f5;
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 2rem;
+        }
+
+        .case-swiper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            height: 450px;
+        }
+
+        .case-swiper .swiper-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .case-swiper .swiper-slide {
+            width: 350px;
+            height: auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .case-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 100%;
+            height: 380px;
+            display: flex;
+            flex-direction: column;
+            margin: 1rem;
+        }
+
+        .case-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .case-card h3 {
+            padding: 1rem 1rem 0.5rem;
+            margin: 0;
+            color: #1e3c72;
+        }
+
+        .case-card p {
+            padding: 0 1rem;
+            margin: 0;
+            color: #666;
+            flex-grow: 1;
+        }
+
+        .case-btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #1e3c72;
+            color: white;
+            text-decoration: none;
+            margin: 1rem;
+            border-radius: 4px;
+            align-self: flex-start;
+        }
+
+        /* 轮播导航按钮样式 */
+        .case-swiper .swiper-button-next,
+        .case-swiper .swiper-button-prev {
+            color: #1e3c72;
+            top: 45%;
+        }
+
+        .case-swiper .swiper-pagination {
+            bottom: 0;
+        }
+
+        .case-swiper .swiper-pagination-bullet-active {
+            background: #1e3c72;
+        }
+
+        /* 页脚样式 */
+        .footer {
+            background: #1e3c72;
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        .footer-content p {
+            margin: 0.5rem 0;
+        }
+
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-content a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 引入公共头部 -->
+    <div id="header">
+        <!-- 添加内联头部，避免依赖外部文件 -->
+        <header style="background-color: #1e3c72; color: white; padding: 1rem 0; position: fixed; width: 100%; top: 0; z-index: 1000;">
+            <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center;">
+                <h1 style="margin: 0; font-size: 1.5rem;">TechMaster</h1>
+                <nav>
+                    <ul style="list-style: none; display: flex; margin: 0; padding: 0;">
+                        <li style="margin-left: 1.5rem;"><a href="#" style="color: white; text-decoration: none;">首页</a></li>
+                        <li style="margin-left: 1.5rem;"><a href="#services" style="color: white; text-decoration: none;">服务</a></li>
+                        <li style="margin-left: 1.5rem;"><a href="#cases" style="color: white; text-decoration: none;">案例</a></li>
+                        <li style="margin-left: 1.5rem;"><a href="about.html" style="color: white; text-decoration: none;">关于我们</a></li>
+                        <li style="margin-left: 1.5rem;"><a href="contact.html" style="color: white; text-decoration: none;">联系我们</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+    </div>
+
+    
+    <div class="main-content">
+        <!-- 轮播图部分 -->
+        <div class="swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3" alt="技术创新">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3" alt="团队协作">
+                </div>
+                <div class="swiper-slide">
+                    <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3" alt="数字化转型">
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+
+        <!-- 服务卡片部分 -->
+        <section class="services" id="services">
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3" alt="软件开发">
+                <h3>软件开发</h3>
+                <p>提供定制化软件开发服务，包括企业应用、移动应用和网络应用开发。</p>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1539269071019-8bc6d57b0205?ixlib=rb-4.0.3" alt="系统运维">
+                <h3>系统运维</h3>
+                <p>专业的IT基础设施运维服务，确保您的系统24/7稳定运行。</p>
+            </div>
+            <div class="service-card">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?ixlib=rb-4.0.3" alt="AI解决方案">
+                <h3>AI解决方案</h3>
+                <p>运用最新人工智能技术，为企业提供智能化升级方案。</p>
+            </div>
+        </section>
+
+        <!-- 案例展示部分 -->
+        <section class="cases" id="cases">
+            <h2 class="section-title">成功案例</h2>
+            <div class="case-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="case-card">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3" alt="企业管理系统">
+                            <h3>某大型企业管理系统</h3>
+                            <p>为大型制造企业打造的现代化管理系统</p>
+                            <a href="#" class="case-btn">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="case-card">
+                            <img src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3" alt="智慧城市APP">
+                            <h3>智慧城市APP</h3>
+                            <p>为省会城市打造的智慧城市服务平台</p>
+                            <a href="#" class="case-btn">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="case-card">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3" alt="企业云转型">
+                            <h3>企业云转型项目</h3>
+                            <p>助力企业完成数字化转型</p>
+                            <a href="#" class="case-btn">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="case-card">
+                            <img src="https://images.unsplash.com/photo-1504384764586-bb4cdc1707b0?ixlib=rb-4.0.3" alt="电商平台">
+                            <h3>电商平台解决方案</h3>
+                            <p>为传统零售企业打造的全渠道电商平台</p>
+                            <a href="#" class="case-btn">查看详情</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="case-card">
+                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3" alt="物联网平台">
+                            <h3>工业物联网平台</h3>
+                            <p>打造智能制造物联网数据中心</p>
+                            <a href="#" class="case-btn">查看详情</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
+        </section>
+        
+        <!-- 页脚部分 -->
+        <footer class="footer" id="footer">
+            <div class="footer-content">
+                
+                <!-- 移除联系信息 -->
+            </div>
+        </footer>
+    </div>
+
+    <!-- 引入 Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script>
+        // 等待 DOM 加载完成
+        // 等待 DOM 加载完成
+        document.addEventListener('DOMContentLoaded', function() {
+        // 移除加载公共头部的代码，使用内联头部
+        
+        // 初始化顶部轮播图
+        new Swiper('.swiper', {
+        loop: true,
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true
+        },
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+        delay: 3000,
+        disableOnInteraction: false
+        },
+        });
+        
+        // 初始化案例轮播
+        new Swiper('.case-swiper', {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        centeredSlides: true,
+        loop: true,
+        pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+        },
+        navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+        },
+        autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+        },
+        breakpoints: {
+        320: {
+        slidesPerView: 1,
+        spaceBetween: 20
+        },
+        768: {
+        slidesPerView: 2,
+        spaceBetween: 30
+        },
+        1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+        centeredSlides: true
+        }
+        }
+        });
+        });
+    </script>
+</body>
+</html>
